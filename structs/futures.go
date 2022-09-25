@@ -94,6 +94,16 @@ type FutureStatus struct {
 	} `json:"result"`
 }
 
+type FutureStats struct {
+	Success bool `json:"success"`
+	Result  struct {
+		Volume          float64   `json:"volume"`
+		NextFundingRate float64   `json:"nextFundingRate"`
+		NextFundingTime time.Time `json:"nextFundingTime"`
+		OpenInterest    float64   `json:"openInterest"`
+	} `json:"result"`
+}
+
 type FutureRates struct {
 	Success bool `json:"success"`
 	Result  []struct {
