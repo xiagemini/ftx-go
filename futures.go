@@ -7,6 +7,7 @@ import (
 )
 
 type Futures structs.Futures
+type Future structs.Future
 
 func (client *FtxClient) ListAllFutures() (Futures, error) {
 	var futures Futures
@@ -17,4 +18,15 @@ func (client *FtxClient) ListAllFutures() (Futures, error) {
 	}
 	err = _processResponse(resp, &futures)
 	return futures, err
+}
+
+func (client *FtxClient) ListFuture(futureName string) (Future, error) {
+	var future Future
+	resp, err := client._get("futures/"+futureName, []byte(""))
+	if err != nil {
+		log.Fatal(err)
+		return future, err
+	}
+	err = _processResponse(resp, &future)
+	return future, err
 }
