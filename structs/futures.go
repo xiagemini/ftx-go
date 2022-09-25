@@ -104,6 +104,21 @@ type FutureStats struct {
 	} `json:"result"`
 }
 
+type MoveStats struct {
+	Success bool `json:"success"`
+	Result  struct {
+		Volume                   float64 `json:"volume"`
+		PredictedExpirationPrice float64 `json:"predictedExpirationPrice"`
+		StrikePrice              float64 `json:"strikePrice"`
+		Greeks                   struct {
+			ImpliedVolatility float64 `json:"impliedVolatility"`
+			Delta             float64 `json:"delta"`
+			Gamma             float64 `json:"gamma"`
+		} `json:"greeks"`
+		OpenInterest float64 `json:"openInterest"`
+	} `json:"result"`
+}
+
 type FutureRates struct {
 	Success bool `json:"success"`
 	Result  []struct {
